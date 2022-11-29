@@ -300,7 +300,11 @@ func (z *Int) SubUint64(x *Int, y uint64) *Int {
 	z[0], carry = bits.Sub64(x[0], y, carry)
 	z[1], carry = bits.Sub64(x[1], 0, carry)
 	z[2], carry = bits.Sub64(x[2], 0, carry)
-	z[3], _ = bits.Sub64(x[3], 0, carry)
+	z[3], carry = bits.Sub64(x[3], 0, carry)
+	z[4], carry = bits.Sub64(x[4], 0, carry)
+	z[5], carry = bits.Sub64(x[5], 0, carry)
+	z[6], carry = bits.Sub64(x[6], 0, carry)
+	z[7], _ = bits.Sub64(x[7], 0, carry)
 	return z
 }
 
@@ -311,6 +315,10 @@ func (z *Int) SubOverflow(x, y *Int) (*Int, bool) {
 	z[1], carry = bits.Sub64(x[1], y[1], carry)
 	z[2], carry = bits.Sub64(x[2], y[2], carry)
 	z[3], carry = bits.Sub64(x[3], y[3], carry)
+	z[4], carry = bits.Sub64(x[4], y[4], carry)
+	z[5], carry = bits.Sub64(x[5], y[5], carry)
+	z[6], carry = bits.Sub64(x[6], y[6], carry)
+	z[7], carry = bits.Sub64(x[7], y[7], carry)
 	return z, carry != 0
 }
 
@@ -320,7 +328,11 @@ func (z *Int) Sub(x, y *Int) *Int {
 	z[0], carry = bits.Sub64(x[0], y[0], 0)
 	z[1], carry = bits.Sub64(x[1], y[1], carry)
 	z[2], carry = bits.Sub64(x[2], y[2], carry)
-	z[3], _ = bits.Sub64(x[3], y[3], carry)
+	z[3], carry = bits.Sub64(x[3], y[3], carry)
+	z[4], carry = bits.Sub64(x[4], y[4], carry)
+	z[5], carry = bits.Sub64(x[5], y[5], carry)
+	z[6], carry = bits.Sub64(x[6], y[6], carry)
+	z[7], _ = bits.Sub64(x[7], y[7], carry)
 	return z
 }
 
